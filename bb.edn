@@ -1,0 +1,9 @@
+{:paths ["." "src" "resources"]
+ :deps {mila/mila {:local/root "."}}
+ :tasks
+ {
+  lint {:doc "Run cljstyle & clj-kondo"
+        :task
+        (do
+          (shell "cljstyle fix --report src")
+          (shell "clj-kondo --lint src"))}}}
