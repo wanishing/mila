@@ -110,30 +110,31 @@
             :transformations         transformations})))
 
 
-(let [expected {:packages [{:name "trainer-client", 
-                            :qualifier "==", 
+(let [expected {:packages [{:name "trainer-client",
+                            :qualifier "==",
                             :version {:major "1", :minor "2", :patch "3"}}
-                           {:name "deepchecks", 
-                            :qualifier "==", 
+                           {:name "deepchecks",
+                            :qualifier "==",
                             :version {:major "0", :minor "8", :patch "3"}}]}]
   (is (= (parse-packages "'trainer-client==1.2.3','deepchecks==0.8.3'")
          expected))
   (is (= (parse-packages "'trainer-client==1.2.3',           'deepchecks==0.8.3'")
          expected)))
 
+
 (is (= (parse-packages "'trainer-client==2.2.14',
         'deepchecks==0.8.3',
         'riskipop==2.10.18',
         'mlops_e2e_tools==0.1.17'")
-     {}))
+       {}))
 
 
 (def config-grammer
   {:config (c/cat
-               (c/hide (c/nt :packages-key))
-               (c/hide           (c/nt :lbracket))
-               (c/star (c/nt :packages))
-               (c/hide           (c/nt :rbracket)))
+             (c/hide (c/nt :packages-key))
+             (c/hide           (c/nt :lbracket))
+             (c/star (c/nt :packages))
+             (c/hide           (c/nt :rbracket)))
    :packages-key (c/cat
                    (c/hide           (c/nt :deps-key))
                    (c/hide           (c/nt :equal)))
@@ -141,6 +142,7 @@
    :lbracket  (c/string "[")
    :rbracket  (c/string "]")
    :equal (c/string "=")})
+
 
 (defn parse-config
   [input]
@@ -150,6 +152,7 @@
            input
            {:start :config
             :transformations         transformations})))
+
 
 (parse-config "install_requires=['trainer-client==2.2.14','deepchecks==0.8.3','riskipop==2.10.18']")
 

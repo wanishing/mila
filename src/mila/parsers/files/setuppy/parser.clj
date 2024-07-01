@@ -131,9 +131,9 @@
   [input]
   (when (valid-input? input)
     (let [index-of (fn [reg input]
-                  (let [m (re-matcher reg input)]
-                    (when (.find m)
-                      (.start m))))
+                     (let [m (re-matcher reg input)]
+                       (when (.find m)
+                         (.start m))))
           start-idx (index-of #"install_requires" input)
           end-idx (when start-idx
                     (index-of #"]" (subs input start-idx)))]
