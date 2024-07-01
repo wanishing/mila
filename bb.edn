@@ -1,9 +1,13 @@
-{:paths ["." "src" "resources"]
+{
+ :paths ["." "src" "resources"]
  :deps {mila/mila {:local/root "."}}
- :tasks
- {
+:tasks {
+  cider-nrepl {:doc  "Run cider nrepl"
+         :task (clojure "-A:cider-clj")}
+
   lint {:doc "Run cljstyle & clj-kondo"
         :task
         (do
           (shell "cljstyle fix --report src")
-          (shell "clj-kondo --lint src"))}}}
+          (shell "clj-kondo --lint src"))}}
+ }
