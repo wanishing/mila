@@ -12,7 +12,6 @@
                   :main-opts ["-m" "cognitect.test-runner"]}},
  :deps {instaparse/instaparse {:mvn/version "1.5.0"}
         babashka/process {:mvn/version "0.1.4"}
-        babashka/fs {:mvn/version "0.1.6"}
-        nubank/matcher-combinators {:mvn/version "3.9.1"}},
+        babashka/fs {:mvn/version "0.1.6"}},
  :neil {:project {:name mila/mila}},
  :paths ["src" "resources"]}
